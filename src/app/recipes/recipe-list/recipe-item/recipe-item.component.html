@@ -1,1 +1,8 @@
-<p>recipe-item works!</p>
+
+<a href="#" class="list-group-item clearfix mt-3" (click)="onSelect()">
+    <div class="card-body">
+        <img  [src]="recipe.image" alt="{{recipe.name}}" width="100px" class="img-responsive">
+        <h5 class="card-title">{{recipe.name}}</h5>
+        <p class="card-text">{{recipe.description}}</p>
+    </div>
+</a>

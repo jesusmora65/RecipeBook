@@ -5,13 +5,6 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <a href="#" class="list-group-item clearfix mt-3" *ngFor="let recipe of recipes">
-            <div class="card-body">
-                <img  [src]="recipe.image" alt="{{recipe.name}}" width="100px" class="img-responsive">
-                <h5 class="card-title">{{recipe.name}}</h5>
-                <p class="card-text">{{recipe.description}}</p>
-            </div>
-        </a>
-        <app-recipe-item></app-recipe-item>
+        <app-recipe-item *ngFor="let item of recipes" [recipe]="item" (recipeSelected)="onRecipeSelected(item)"></app-recipe-item>
     </div>
 </div>
