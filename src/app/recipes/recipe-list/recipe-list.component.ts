@@ -1,20 +1,18 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Recipe } from '../recipe.module';
+import { RecipeService } from '../recipe.service'; 
 
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
   styleUrl: './recipe-list.component.css'
 })
-export class RecipeListComponent {
-  @Output() recipeWasSelected = new EventEmitter<Recipe>();
+export class RecipeListComponent implements OnInit {
+  recipes: Recipe [];
 
-  recipes: Recipe[] = [
-    new Recipe("Receta de ejemplo", "Esta es una receta de ejemplo", "https://www.comedera.com/wp-content/uploads/2022/10/Gallo-pinto-de-Costa-Rica-shutterstock_1148861354.jpg"),
-    new Recipe("Receta de ejemplo", "Esta es una receta de ejemplo", "https://www.comedera.com/wp-content/uploads/2022/10/Gallo-pinto-de-Costa-Rica-shutterstock_1148861354.jpg")
-  ];
+  constructor(private recipeService: RecipeService){}
 
-  onRecipeSelected(recipe: Recipe){
-    this.recipeWasSelected.emit(recipe);
+  ngOnInit(){
+    this.recipes = this.recipeService.getRecipes();
   }
 }
