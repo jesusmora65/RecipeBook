@@ -25,6 +25,10 @@ export class RecipeService{
     return this.recipes.slice();
   }
 
+  getRecipe(id: number){
+    return this.recipes.slice()[id];
+  }
+
   addIngredientsToList(ingredients: Ingredients[]){
     this.shoppingListService.addIngredients(ingredients);
   }

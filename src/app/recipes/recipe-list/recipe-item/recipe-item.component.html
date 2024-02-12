@@ -1,8 +1,19 @@
-
-<a href="#" class="list-group-item clearfix mt-3" (click)="onSelect()">
-    <div class="card-body">
-        <img  [src]="recipe.image" alt="{{recipe.name}}" width="100px" class="img-responsive">
-        <h5 class="card-title">{{recipe.name}}</h5>
-        <p class="card-text">{{recipe.description}}</p>
-    </div>
+<a
+  style="cursor: pointer"
+  routerLinkActive="active"
+  [routerLink]="[index]"
+  class="list-group-item list-group-item-action"
+>
+<div class="d-flex w-100 justify-content-between">
+  <div>
+    <h5>{{ recipe.name }}</h5>
+    <p>{{recipe.description}}</p>
+  </div>
+    <img
+      [src]="recipe.image"
+      alt="{{ recipe.name }}"
+      width="100px"
+      class="img-responsive"
+    />
+  </div>
 </a>
