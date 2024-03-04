@@ -14,11 +14,23 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li routerLinkActive="active" class="nav-item">
-          <a routerLink="/recipes" class="nav-link">Recipe</a>
+        <li routerLinkActive="active" class="nav-item" *ngIf="isAuthenticated">
+          <a routerLink="/recipes" class="nav-link"
+            >Recipe</a
+          >
+        </li>
+        <li routerLinkActive="active" class="nav-item" *ngIf="!isAuthenticated">
+          <a routerLink="/auth" class="nav-link" 
+            >Autenticar</a
+          >
         </li>
         <li routerLinkActive="active" class="nav-item">
           <a routerLink="/shopping-list" class="nav-link">Shopping List</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="isAuthenticated">
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer" (click)="onLogOut()">Cerrar Sesión</a>
         </li>
         <li class="nav-item dropdown" appDropDown>
           <a
@@ -32,10 +44,20 @@
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" style="cursor: pointer" (click)="onSaveData()">Save Data</a>
+              <a
+                class="dropdown-item"
+                style="cursor: pointer"
+                (click)="onSaveData()"
+                >Save Data</a
+              >
             </li>
             <li>
-              <a class="dropdown-item" style="cursor: pointer" (click)="onFetchRecipes()">Fetch Data</a>
+              <a
+                class="dropdown-item"
+                style="cursor: pointer"
+                (click)="onFetchRecipes()"
+                >Fetch Data</a
+              >
             </li>
           </ul>
         </li>
